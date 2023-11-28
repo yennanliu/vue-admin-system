@@ -1,4 +1,4 @@
-//const { defineConfig } = require('@vue/cli-service')
-module.exports = {
-  publicPath: 'vue-admin-system'
-}
+const { defineConfig } = require('@vue/cli-service')
+module.exports = defineConfig({
+  transpileDependencies: true
+})
