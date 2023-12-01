@@ -6,14 +6,15 @@
       <li v-for="hotel in hotels" :key="hotel.id">
         <!-- <a href="https://www.youtube.com/">這個連結</a>會連到 YouTube<br> -->
         <!-- TODO : fix read url from json -->
-        Name : {{ hotel.name }} | City : {{ hotel.city }} | <a href="http://booking.com">Link</a> | Created Time : {{ hotel.created_time }}
+        Name : {{ hotel.name }} | City : {{ hotel.city }} |
+        <a href="http://booking.com">Link</a> | Created Time :
+        {{ hotel.created_time }}
       </li>
     </ul>
   </div>
 </template>
 
 <script>
-
 // https://reactgo.com/vue-read-json-file/
 
 // currently users.jon is in src/views/Hotel/users.json -> TODO : check if can move to asset
@@ -26,6 +27,16 @@ export default {
     };
   },
 };
+
+function myPrint() {
+  console.log(123);
+}
+
+function isValid(inputDate) {
+  let givenDate1 = new Date("10/21/2001"); // Past Date
+  let diff = new Date(inputDate) - givenDate1.getTime();
+  return diff > 0;
+}
 </script>
 
 <style scoped>
@@ -37,7 +48,7 @@ h4 {
 
 li {
   font-family: "Roboto", sans-serif;
-  color: #3343FF;
+  color: #3343ff;
   font-weight: 700;
 }
 
