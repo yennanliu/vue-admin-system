@@ -1,37 +1,28 @@
 <template>
-  <div class="about">
-    <h1>This is HOTEL page !!!</h1>
-    <button @click="increment">count is: {{ count }}</button>
-
+  <div id="app">
+    <h1>This is Hotel page</h1>
     <ul>
-      <li v-for="item in items" :key="item.id">{{ item.text }}</li>
+      <li v-for="user in users" :key="user.id">
+        {{ user.name }}
+      </li>
     </ul>
-
   </div>
 </template>
-  
 
 <script>
-import { ref } from "vue";
+
+// https://reactgo.com/vue-read-json-file/
+
+// currently users.jon is in src/views/Hotel/users.json -> TODO : check if can move to asset
+import usersData from "./users.json";
 
 export default {
   data() {
-    // TODO : read from csv
     return {
-      items: [
-        { id: 1, text: "item 1" },
-        { id: 2, text: "item 2" },
-        { id: 3, text: "item 3" },
-      ],
+      users: usersData,
     };
   },
 };
-
-const count = ref(0);
-
-function increment() {
-  count.value++;
-}
 </script>
 
 <style scoped>
