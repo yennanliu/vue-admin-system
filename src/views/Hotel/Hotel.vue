@@ -1,9 +1,10 @@
 <template>
   <div id="app">
     <h1>Hotel List</h1>
+    <h4>h4 tab</h4>
     <ul>
-      <li v-for="user in users" :key="user.id">
-        Name : {{ user.name }} | City : {{ user.city }} | link : {{ user.url }}
+      <li v-for="hotel in hotels" :key="hotel.id">
+        Name : {{ hotel.name }} | City : {{ hotel.city }} | link : {{ hotel.url }} | Created Time : {{ hotel.created_time }}
       </li>
     </ul>
   </div>
@@ -14,12 +15,12 @@
 // https://reactgo.com/vue-read-json-file/
 
 // currently users.jon is in src/views/Hotel/users.json -> TODO : check if can move to asset
-import usersData from "./hotel_data.json";
+import hotelData from "./hotel_data.json";
 
 export default {
   data() {
     return {
-      users: usersData,
+      hotels: hotelData,
     };
   },
 };
@@ -29,6 +30,12 @@ export default {
 h4 {
   font-family: "Roboto", sans-serif;
   color: #484848;
+  font-weight: 700;
+}
+
+li {
+  font-family: "Roboto", sans-serif;
+  color: #3343FF;
   font-weight: 700;
 }
 

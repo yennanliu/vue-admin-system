@@ -3,18 +3,21 @@
     "id": 23,
     "name": "hotel plaza",
     "city" : "tokyo",
-    "url" : "https://booking.com/"
+    "url" : "https://booking.com/",
+    "created_time" : "20230101"
   },
   {
     "id": 24,
     "name": "inn A",
     "city" : "osaka",
-    "url" : "https://booking.com/"
+    "url" : "https://booking.com/",
+    "created_time" : "20220101"
   },
   {
     "id": 25,
     "name": "royal hotel",
     "city" : "sapparo",
-    "url" : "https://booking.com/"
+    "url" : "https://booking.com/",
+    "created_time" : "20231101"
   }
 ]
