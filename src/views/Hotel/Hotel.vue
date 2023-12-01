@@ -8,7 +8,8 @@
         <!-- TODO : fix read url from json -->
         Name : {{ hotel.name }} | City : {{ hotel.city }} |
         <a href="http://booking.com">Link</a> | Created Time :
-        {{ hotel.created_time }}
+        {{ hotel.created_time }} 
+        <!-- | Valid : {{ this.isValid(hotel.created_time) }} -->
       </li>
     </ul>
   </div>
@@ -35,6 +36,7 @@ function myPrint() {
 function isValid(inputDate) {
   let givenDate1 = new Date("10/21/2001"); // Past Date
   let diff = new Date(inputDate) - givenDate1.getTime();
+  console.log("diff = " + diff);
   return diff > 0;
 }
 </script>
