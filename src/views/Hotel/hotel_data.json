@@ -1,0 +1,20 @@
+[
+  {
+    "id": 23,
+    "name": "hotel plaza",
+    "city" : "tokyo",
+    "url" : "https://booking.com/"
+  },
+  {
+    "id": 24,
+    "name": "inn A",
+    "city" : "osaka",
+    "url" : "https://booking.com/"
+  },
+  {
+    "id": 25,
+    "name": "royal hotel",
+    "city" : "sapparo",
+    "url" : "https://booking.com/"
+  }
+]
