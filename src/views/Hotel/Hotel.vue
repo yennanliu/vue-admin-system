@@ -4,7 +4,9 @@
     <h4>h4 tab</h4>
     <ul>
       <li v-for="hotel in hotels" :key="hotel.id">
-        Name : {{ hotel.name }} | City : {{ hotel.city }} | link : {{ hotel.url }} | Created Time : {{ hotel.created_time }}
+        <!-- <a href="https://www.youtube.com/">這個連結</a>會連到 YouTube<br> -->
+        <!-- TODO : fix read url from json -->
+        Name : {{ hotel.name }} | City : {{ hotel.city }} | <a href="http://booking.com">Link</a> | Created Time : {{ hotel.created_time }}
       </li>
     </ul>
   </div>
