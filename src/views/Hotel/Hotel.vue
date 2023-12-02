@@ -77,8 +77,9 @@ table {
 
 th, td {
   border: 1px solid #ddd;
-  padding: 15px;
+  padding: 20px; /* Increased padding */
   text-align: left;
+  font-size: 18px; /* Increased font size */
 }
 
 th {
