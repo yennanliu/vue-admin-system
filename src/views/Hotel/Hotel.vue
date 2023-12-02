@@ -2,17 +2,28 @@
   <div id="app">
     <h1 class="header">Hotel List</h1>
     <h4 class="sub-header">h4 tab</h4>
-    <ul>
-      <li v-for="hotel in hotels" :key="hotel.id" class="hotel-item">
-        <div class="hotel-details">
-          <span class="hotel-name">{{ capitalizeString(hotel.name) }}</span>
-          <span class="hotel-city"> | City: {{ hotel.city }}</span>
-          <span class="hotel-link"> | <a :href="hotel.bookingLink" target="_blank">Book Now</a></span>
-          <span class="hotel-created-time"> | Created Time: {{ hotel.created_time }}</span>
-          <span class="hotel-valid-status"> | Valid: {{ checkIfValid(hotel.created_time) ? 'Yes' : 'No' }}</span>
-        </div>
-      </li>
-    </ul>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>City</th>
+          <th>Link</th>
+          <th>Created Time</th>
+          <th>Valid</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="hotel in hotels" :key="hotel.id" class="hotel-item">
+          <td>{{ capitalizeString(hotel.name) }}</td>
+          <td>{{ hotel.city }}</td>
+          <td><a href="http://booking.com">Link</a></td>
+          <td>{{ hotel.created_time }}</td>
+          <td :class="{ valid: checkIfValid(hotel.created_time) }">
+            {{ checkIfValid(hotel.created_time) ? 'Yes' : 'No' }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -57,48 +68,34 @@ export default {
   font-weight: bold;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 15px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
 }
 
 .hotel-item {
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  padding: 15px;
-  border-radius: 8px;
+  background-color: #f9f9f9;
 }
 
-.hotel-details {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.hotel-name {
+td a {
+  text-decoration: none;
   color: #3343ff;
-  font-weight: 700;
-  font-size: 20px;
+  font-weight: bold;
 }
 
-.hotel-city {
-  margin-left: 10px;
-  font-size: 18px;
-}
-
-.hotel-link {
-  margin-left: 10px;
-  font-size: 18px;
-}
-
-.hotel-created-time {
-  margin-left: 10px;
-  font-size: 18px;
-}
-
-.hotel-valid-status {
-  margin-left: 10px;
+.valid {
   color: green;
-  font-weight: 700;
-  font-size: 18px;
+  font-weight: bold;
 }
 </style>
