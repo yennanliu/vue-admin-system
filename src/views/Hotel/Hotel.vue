@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <h1 class="header">Hotel List</h1>
-    <h4 class="sub-header">h4 tab</h4>
+    <!-- <h4 class="sub-header">h4 tab</h4> -->
+    <a href="http://booking.com">Update Hotel data</a>
     <table>
       <thead>
         <tr>
@@ -42,7 +43,7 @@ export default {
       return value.charAt(0).toUpperCase() + value.slice(1);
     },
     checkIfValid(inputDate) {
-      const givenDate = new Date("10/21/2001").getTime();
+      const givenDate = new Date("10/21/2023").getTime();
       const diff = new Date(inputDate).getTime() - givenDate;
       return diff > 0;
     },
