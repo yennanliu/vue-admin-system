@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import Hotel from "../views/Hotel/Hotel.vue";
 import Signin from "../views/Signin.vue";
+import Admin from "../views/Admin.vue";
 
 Vue.use(VueRouter)
 
@@ -29,6 +30,11 @@ const routes = [
     path: "/signin",
     name: "Signin",
     component: Signin,
+  },
+  {
+    path: "/admin",
+    name: "Admin",
+    component: Admin,
   }
 ]
 
