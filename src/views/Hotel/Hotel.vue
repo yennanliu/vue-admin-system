@@ -1,25 +1,22 @@
 <template>
   <div id="app">
-    <h1>Hotel List</h1>
-    <h4>h4 tab</h4>
+    <h1 class="header">Hotel List</h1>
+    <h4 class="sub-header">h4 tab</h4>
     <ul>
-      <li v-for="hotel in hotels" :key="hotel.id">
-        <!-- <a href="https://www.youtube.com/">這個連結</a>會連到 YouTube<br> -->
-        <!-- TODO : fix read url from json -->
-        Name : {{ hotel.name }} | City : {{ hotel.city }} |
-        <a href="http://booking.com">Link</a> | Created Time :
-        {{ hotel.created_time }}
-        | Valid : {{ checkIfValid(hotel.created_time) }} |
-        <p>Capitalized Name: {{ capitalizeString(hotel.name) }}</p>
+      <li v-for="hotel in hotels" :key="hotel.id" class="hotel-item">
+        <div class="hotel-details">
+          <span class="hotel-name">{{ capitalizeString(hotel.name) }}</span>
+          <span class="hotel-city"> | City: {{ hotel.city }}</span>
+          <span class="hotel-link"> | <a href="http://booking.com">Book now</a></span>
+          <span class="hotel-created-time"> | Created Time: {{ hotel.created_time }}</span>
+          <span class="hotel-valid-status"> | Valid: {{ checkIfValid(hotel.created_time) ? 'Yes' : 'No' }}</span>
+        </div>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
-// https://reactgo.com/vue-read-json-file/
-
-// currently users.jon is in src/views/Hotel/users.json -> TODO : check if can move to asset
 import hotelData from "./hotel_data.json";
 
 export default {
@@ -34,10 +31,8 @@ export default {
       return value.charAt(0).toUpperCase() + value.slice(1);
     },
     checkIfValid(inputDate) {
-      let givenDate1 = new Date("10/21/2001"); // Past Date
-      let diff = new Date(inputDate) - givenDate1.getTime();
-      console.log("diff = " + diff);
-      //return "123";
+      const givenDate = new Date("10/21/2001").getTime();
+      const diff = new Date(inputDate).getTime() - givenDate;
       return diff > 0;
     },
   },
@@ -45,20 +40,60 @@ export default {
 </script>
 
 <style scoped>
-h4 {
+#app {
   font-family: "Roboto", sans-serif;
   color: #484848;
-  font-weight: 700;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-li {
-  font-family: "Roboto", sans-serif;
+.header {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.sub-header {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.hotel-item {
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.hotel-details {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.hotel-name {
   color: #3343ff;
   font-weight: 700;
 }
 
-#add-category {
-  float: right;
-  font-weight: 500;
+.hotel-city {
+  margin-left: 10px;
+}
+
+.hotel-link {
+  margin-left: 10px;
+}
+
+.hotel-created-time {
+  margin-left: 10px;
+}
+
+.hotel-valid-status {
+  margin-left: 10px;
+  color: green;
+  font-weight: 700;
 }
 </style>
