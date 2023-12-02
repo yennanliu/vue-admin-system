@@ -19,7 +19,7 @@
           <td>{{ hotel.city }}</td>
           <td><a href="http://booking.com">Link</a></td>
           <td>{{ hotel.created_time }}</td>
-          <td :class="{ valid: checkIfValid(hotel.created_time) }">
+          <td :class="{ valid: checkIfValid(hotel.created_time), invalid: !checkIfValid(hotel.created_time) }">
             {{ checkIfValid(hotel.created_time) ? 'Yes' : 'No' }}
           </td>
         </tr>
@@ -98,6 +98,11 @@ td a {
 
 .valid {
   color: green;
+  font-weight: bold;
+}
+
+.invalid {
+  color: red; /* Red color for invalid (No) */
   font-weight: bold;
 }
 </style>
