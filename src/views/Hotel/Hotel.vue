@@ -8,8 +8,9 @@
         <!-- TODO : fix read url from json -->
         Name : {{ hotel.name }} | City : {{ hotel.city }} |
         <a href="http://booking.com">Link</a> | Created Time :
-        {{ hotel.created_time }} 
-        <!-- | Valid : {{ this.isValid(hotel.created_time) }} -->
+        {{ hotel.created_time }}
+        | Valid : {{ checkIfValid(hotel.created_time) }} |
+        <p>Capitalized Name: {{ capitalizeString(hotel.name) }}</p>
       </li>
     </ul>
   </div>
@@ -27,18 +28,20 @@ export default {
       hotels: hotelData,
     };
   },
+
+  methods: {
+    capitalizeString(value) {
+      return value.charAt(0).toUpperCase() + value.slice(1);
+    },
+    checkIfValid(inputDate) {
+      let givenDate1 = new Date("10/21/2001"); // Past Date
+      let diff = new Date(inputDate) - givenDate1.getTime();
+      console.log("diff = " + diff);
+      //return "123";
+      return diff > 0;
+    },
+  },
 };
-
-function myPrint() {
-  console.log(123);
-}
-
-function isValid(inputDate) {
-  let givenDate1 = new Date("10/21/2001"); // Past Date
-  let diff = new Date(inputDate) - givenDate1.getTime();
-  console.log("diff = " + diff);
-  return diff > 0;
-}
 </script>
 
 <style scoped>
