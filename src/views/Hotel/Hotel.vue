@@ -7,7 +7,7 @@
         <div class="hotel-details">
           <span class="hotel-name">{{ capitalizeString(hotel.name) }}</span>
           <span class="hotel-city"> | City: {{ hotel.city }}</span>
-          <span class="hotel-link"> | <a href="http://booking.com">Book now</a></span>
+          <span class="hotel-link"> | <a :href="hotel.bookingLink" target="_blank">Book Now</a></span>
           <span class="hotel-created-time"> | Created Time: {{ hotel.created_time }}</span>
           <span class="hotel-valid-status"> | Valid: {{ checkIfValid(hotel.created_time) ? 'Yes' : 'No' }}</span>
         </div>
@@ -48,12 +48,12 @@ export default {
 }
 
 .header {
-  font-size: 24px;
+  font-size: 32px;
   font-weight: bold;
 }
 
 .sub-header {
-  font-size: 18px;
+  font-size: 24px;
   font-weight: bold;
 }
 
@@ -65,7 +65,7 @@ ul {
 .hotel-item {
   margin-bottom: 20px;
   border: 1px solid #ccc;
-  padding: 10px;
+  padding: 15px;
   border-radius: 8px;
 }
 
@@ -77,23 +77,28 @@ ul {
 .hotel-name {
   color: #3343ff;
   font-weight: 700;
+  font-size: 20px;
 }
 
 .hotel-city {
   margin-left: 10px;
+  font-size: 18px;
 }
 
 .hotel-link {
   margin-left: 10px;
+  font-size: 18px;
 }
 
 .hotel-created-time {
   margin-left: 10px;
+  font-size: 18px;
 }
 
 .hotel-valid-status {
   margin-left: 10px;
   color: green;
   font-weight: 700;
+  font-size: 18px;
 }
 </style>
