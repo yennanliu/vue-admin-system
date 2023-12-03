@@ -9,15 +9,19 @@ const port = 3000;
 app.use(bodyParser.json());
 
 app.get('/hotels', (req, res) => {
-  const hotelData = require('./hotel_data.json');
+  const hotelData = require('./views/Hotel/hotel_data.json');
   res.json(hotelData);
 });
 
-app.post('/hotels', (req, res) => {
+app.get('/test', (req, res) => {
+  res.json({"key":"123"});
+});
+
+app.post('hotels', (req, res) => {
   const updatedData = req.body;
 
   // Update the local JSON file with the modified data
-  fs.writeFile('./hotel_data.json', JSON.stringify(updatedData, null, 2), (err) => {
+  fs.writeFile('./views/Hotel/hotel_data.json', JSON.stringify(updatedData, null, 2), (err) => {
     if (err) {
       console.error(err);
       res.status(500).send('Error saving data');

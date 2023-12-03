@@ -16,7 +16,7 @@ npm run serve
 # - Local:   http://localhost:8080/
 
 # BE app (server)
-node server.js
+node src/server.js
 # Server is running at http://localhost:3000
 ```
 
@@ -31,6 +31,11 @@ npm src/run build
 ```bash
 npm run lint
 ```
+
+### BE endpoints
+
+- http://localhost:3000/hotels
+
 
 ### Customize configuration
 
