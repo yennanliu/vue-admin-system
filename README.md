@@ -5,6 +5,7 @@
 ```bash
 npm install
 npm install express fs
+npm install cors
 ```
 
 ### Compiles and hot-reloads for development
