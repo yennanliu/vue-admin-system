@@ -40,6 +40,17 @@ export default {
   },
 
   methods: {
+    loadHotelData() {
+      fetch("http://localhost:3000/hotels", {
+        method: "GET",
+      })
+        .then((x) => {
+          console.log(x);
+        })
+        .catch((error) => {
+          console.log(">>> error = " + error);
+        });
+    },
     updateHotelName(hotel, event) {
       hotel.name = event.target.textContent;
     },
@@ -66,6 +77,9 @@ export default {
           console.error(error);
         });
     },
+  },
+  mounted() {
+    this.loadHotelData();
   },
 };
 </script>
