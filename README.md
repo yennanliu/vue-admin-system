@@ -17,7 +17,7 @@ npm run serve
 # - Local:   http://localhost:8080/
 
 # BE app (server)
-node src/server.js
+cd src && node src/server.js
 # Server is running at http://localhost:3000
 ```
 

@@ -15,9 +15,15 @@
       </thead>
       <tbody>
         <tr v-for="hotel in hotels" :key="hotel.id">
-          <td>{{ hotel.name }}</td>
-          <td>{{ hotel.city }}</td>
-          <td><a :href="hotel.bookingLink" target="_blank">Link</a></td>
+          <td contenteditable @input="updateHotelName(hotel, $event)">
+            {{ hotel.name }}
+          </td>
+          <td contenteditable @input="updateHotelCity(hotel, $event)">
+            {{ hotel.city }}
+          </td>
+          <td contenteditable @input="updateHotelUrl(hotel, $event)">
+            <a :href="hotel.url" target="_blank">Link</a>
+          </td>
           <td>{{ hotel.created_time }}</td>
         </tr>
       </tbody>
@@ -34,19 +40,29 @@ export default {
   },
 
   methods: {
+    updateHotelName(hotel, event) {
+      hotel.name = event.target.textContent;
+    },
+    updateHotelCity(hotel, event) {
+      hotel.city = event.target.textContent;
+    },
+    updateHotelUrl(hotel, event) {
+      hotel.url = event.target.textContent;
+    },
     updateHotelData() {
-      // Make a GET request to fetch hotel data from the server
-      fetch('http://localhost:3000/hotels')
-        .then((response) => {
-          // console.log(">>> response.json() = " + response.json())
-          response.json();
-        })
-        .then((data) => {
-          console.log("data = " + data);
-          this.hotels = data;
+      // Make a POST request to update hotel data on the server
+      fetch("http://localhost:3000/hotels", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(this.hotels),
+      })
+        .then((response) => response.text())
+        .then((message) => {
+          console.log(message);
         })
         .catch((error) => {
-          console.log("error = " + error);
           console.error(error);
         });
     },
@@ -73,7 +89,8 @@ table {
   margin-top: 20px;
 }
 
-th, td {
+th,
+td {
   border: 1px solid #ddd;
   padding: 20px;
   text-align: left;

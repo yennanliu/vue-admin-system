@@ -20,8 +20,11 @@ app.get("/test", (req, res) => {
 });
 
 app.post("/hotels", (req, res) => {
-  const updatedData = req.body;
+  // TODO : check why below print cause "circlar reference" error ?
+  // https://stackoverflow.com/questions/57227631/how-to-fix-circular-reference-in-javascript-object
+  //console.log(">>> req = " + JSON.stringify(req))
 
+  const updatedData = req.body;
   // Update the local JSON file with the modified data
   fs.writeFile(
     "./views/Hotel/hotel_data.json",
@@ -38,5 +41,5 @@ app.post("/hotels", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
+  console.log(`------> Server is running at http://localhost:${port}`);
 });
