@@ -3,7 +3,7 @@
 <template>
   <div id="admin-app">
     <h1 class="header">Admin Panel</h1>
-    <button @click="updateHotelData">Update Hotel Data</button>
+    <button @click="loadHotelData">Load Hotel Data</button>
     <table>
       <thead>
         <tr>
@@ -15,15 +15,9 @@
       </thead>
       <tbody>
         <tr v-for="hotel in hotels" :key="hotel.id">
-          <td contenteditable @input="updateHotelName(hotel, $event)">
-            {{ hotel.name }}
-          </td>
-          <td contenteditable @input="updateHotelCity(hotel, $event)">
-            {{ hotel.city }}
-          </td>
-          <td contenteditable @input="updateHotelUrl(hotel, $event)">
-            <a :href="hotel.url" target="_blank">Link</a>
-          </td>
+          <td>{{ hotel.name }}</td>
+          <td>{{ hotel.city }}</td>
+          <td><a :href="hotel.url" target="_blank">Link</a></td>
           <td>{{ hotel.created_time }}</td>
         </tr>
       </tbody>
@@ -44,13 +38,21 @@ export default {
       fetch("http://localhost:3000/hotels", {
         method: "GET",
       })
-        .then((x) => {
-          console.log(x);
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          this.hotels = data;
         })
         .catch((error) => {
-          console.log(">>> error = " + error);
+          console.error("Error fetching hotel data:", error);
         });
     },
+
+    // TODO : add/fix hotel data update function
     updateHotelName(hotel, event) {
       hotel.name = event.target.textContent;
     },
